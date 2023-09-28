@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl =  'https://localhost:7200/api/';
+  baseUrl =  environment.apiUrl;
  //private currentUserSource = new BehaviorSubject<User>(null); this return error it complaining bcoz since we made it null coz we wont know the info til we check 
   private currentUserSource = new BehaviorSubject<User | null>(null);// this uses pipe key and union, this means it can be type User or null.
   currentUsers$ = this.currentUserSource.asObservable();
