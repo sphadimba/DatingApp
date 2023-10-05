@@ -40,6 +40,14 @@ export class MembersService {
     );
   }
 
+  setMainPhoto(photoId: number) {
+    return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
+  }
+
+  deletePhoto(photoId: number) {
+    return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);    
+  }
+
   //We are removing this because we are going to use Interceptor to get Jwt token - JwtInterceptor
   // getHttpOptions(){
   //   const userString = localStorage.getItem('user');
