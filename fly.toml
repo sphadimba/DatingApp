@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for datingapp-course-spha on 2024-05-24T01:29:37+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'datingapp-course-spha'
+primary_region = 'jnb'
+
+[build]
+  image = 'sphadimba/datingapp:latest'
+
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+  CloudinarySettings__CloudName="dfn7ncw6i"
+  CloudinarySettings__ApiKey="386832598741477"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
